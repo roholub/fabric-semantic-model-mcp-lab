@@ -47,7 +47,7 @@ flowchart LR
     CLIENT["VS Code + GitHub Copilot<br/>with instructions and skills"] --> AUTH["Power BI Authoring MCP server<br/>this repo: local, GA"]
     CLIENT --> OTHERS["Other Fabric MCP servers<br/>Core, Data Warehouse, Eventhouse, data agent, ontology,<br/>Fabric MCP Server local, DataFactory, and more"]
     CLIENT -.-> FIQ["Fabric IQ MCP<br/>read-only, for exploring and querying Power BI data, not for authoring"]
-    style AUTH fill:#d9f2e3,stroke:#2e7d4f,stroke-width:3px
+    style AUTH fill:#d9f2e3,stroke:#2e7d4f,stroke-width:3px,color:#0b3d1f
 ```
 
 - **This repo uses one server:** the Power BI Authoring MCP server, local deployment. Learn tells you not to register the hosted and local versions at the same time, because the agent then sees two overlapping sets of tools.
@@ -81,7 +81,7 @@ flowchart TB
     TOOLKIT --> M2
     BPA -.-> M1
     BPA -.-> M2
-    style TOOLKIT fill:#d9f2e3,stroke:#2e7d4f
+    style TOOLKIT fill:#d9f2e3,stroke:#2e7d4f,color:#0b3d1f
 ```
 
 | Path | What it is | Lab only, or reusable? |

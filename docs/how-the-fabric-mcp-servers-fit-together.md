@@ -53,7 +53,7 @@ flowchart TB
     FIQ["Fabric IQ MCP: consumption. Read-only tools to explore and query Power BI data"]
     CLIENT -.-> FIQ
 
-    style PBIL fill:#d9f2e3,stroke:#2e7d4f,stroke-width:3px
+    style PBIL fill:#d9f2e3,stroke:#2e7d4f,stroke-width:3px,color:#0b3d1f
 ```
 
 Notes on the diagram:
