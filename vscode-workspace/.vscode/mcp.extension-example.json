@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "powerbi-authoring-local": {
+      "type": "stdio",
+      "command": "C:\\Users\\<you>\\.vscode\\extensions\\analysis-services.powerbi-modeling-mcp-<version>-win32-x64\\server\\powerbi-modeling-mcp.exe",
+      "args": ["--start", "--readwrite", "--require-confirmation"]
+    }
+  }
+}

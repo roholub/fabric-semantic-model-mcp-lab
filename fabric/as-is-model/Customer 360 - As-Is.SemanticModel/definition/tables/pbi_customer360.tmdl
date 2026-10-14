@@ -1,0 +1,145 @@
+table pbi_customer360
+	lineageTag: pbi_customer360
+
+	column 'Tenure Days' = DATEDIFF ( pbi_customer360[SignupDateTime], TODAY (), DAY )
+		dataType: int64
+		formatString: 0
+		summarizeBy: sum
+
+	column Email
+		dataType: string
+		sourceColumn: Email
+		summarizeBy: none
+
+	column FirstName
+		dataType: string
+		sourceColumn: FirstName
+		summarizeBy: none
+
+	column LastName
+		dataType: string
+		sourceColumn: LastName
+		summarizeBy: none
+
+	column FullName
+		dataType: string
+		sourceColumn: FullName
+		summarizeBy: none
+
+	column Company
+		dataType: string
+		sourceColumn: Company
+		summarizeBy: none
+
+	column JobTitle
+		dataType: string
+		sourceColumn: JobTitle
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column City
+		dataType: string
+		sourceColumn: City
+		summarizeBy: none
+
+	column State
+		dataType: string
+		sourceColumn: State
+		summarizeBy: none
+
+	column PostalCode
+		dataType: int64
+		sourceColumn: PostalCode
+		summarizeBy: sum
+
+	column SignupDateTime
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: SignupDateTime
+		summarizeBy: none
+
+	column LastSeenDateTime
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: LastSeenDateTime
+		summarizeBy: none
+
+	column sub_sts
+		dataType: string
+		sourceColumn: sub_sts
+		summarizeBy: none
+
+	column CurrentPlan
+		dataType: string
+		sourceColumn: CurrentPlan
+		summarizeBy: none
+
+	column plan_prc
+		dataType: double
+		sourceColumn: plan_prc
+		summarizeBy: sum
+
+	column RenewalDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: RenewalDate
+		summarizeBy: none
+
+	column IsEnterprise
+		dataType: string
+		sourceColumn: IsEnterprise
+		summarizeBy: none
+
+	column EnterpriseAccountName
+		dataType: string
+		sourceColumn: EnterpriseAccountName
+		summarizeBy: none
+
+	column NewsletterCount
+		dataType: int64
+		sourceColumn: NewsletterCount
+		summarizeBy: sum
+
+	column EventCount
+		dataType: int64
+		sourceColumn: EventCount
+		summarizeBy: sum
+
+	column LifetimePageViews
+		dataType: int64
+		sourceColumn: LifetimePageViews
+		summarizeBy: sum
+
+	column LastArticleTitle
+		dataType: string
+		sourceColumn: LastArticleTitle
+		summarizeBy: none
+
+	column CustomerSegment
+		dataType: string
+		sourceColumn: CustomerSegment
+		summarizeBy: none
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	column row_hash
+		dataType: string
+		sourceColumn: row_hash
+		summarizeBy: none
+
+	partition pbi_customer360 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_customer360"]}[Data]
+				in
+				    Data

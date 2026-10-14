@@ -1,0 +1,15 @@
+{
+  "name": "pl_nightly_customer360_refresh",
+  "_comment": "Synthetic, simplified Data Factory pipeline definition. Not importable as-is.",
+  "schedule": "daily 02:00 UTC",
+  "activities": [
+    { "name": "Copy billing export",        "type": "Copy", "source": "billing_system", "sink": "stage.billing_subscriptions" },
+    { "name": "Copy web analytics daily",   "type": "Copy", "source": "web_analytics",  "sink": "stage.web_analytics_daily" },
+    { "name": "Copy ticketing",             "type": "Copy", "source": "ticketing",      "sink": "stage.ticketing_registrations" },
+    { "name": "Copy ad system",             "type": "Copy", "source": "ad_system",      "sink": "stage.ad_system_orders" },
+    { "name": "Rebuild pbi tables",         "type": "StoredProcedure", "procedure": "pbi.usp_refresh_pbi_tables",
+      "dependsOn": ["Copy billing export", "Copy web analytics daily", "Copy ticketing", "Copy ad system"] },
+    { "name": "Refresh Customer 360 model", "type": "PowerBIDatasetRefresh", "dataset": "Customer 360 - As-Is", "dependsOn": ["Rebuild pbi tables"] }
+  ],
+  "alerts": "none configured"
+}

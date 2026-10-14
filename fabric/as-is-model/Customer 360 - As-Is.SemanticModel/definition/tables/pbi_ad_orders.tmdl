@@ -1,0 +1,58 @@
+table pbi_ad_orders
+	lineageTag: pbi_ad_orders
+
+	column OrderID
+		dataType: string
+		sourceColumn: OrderID
+		summarizeBy: none
+
+	column AdvertiserName
+		dataType: string
+		sourceColumn: AdvertiserName
+		summarizeBy: none
+
+	column ContactEmail
+		dataType: string
+		sourceColumn: ContactEmail
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column OrderDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: OrderDate
+		summarizeBy: none
+
+	column AdProduct
+		dataType: string
+		sourceColumn: AdProduct
+		summarizeBy: none
+
+	column Impressions
+		dataType: int64
+		sourceColumn: Impressions
+		summarizeBy: sum
+
+	column Amount
+		dataType: double
+		sourceColumn: Amount
+		summarizeBy: sum
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	partition pbi_ad_orders = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_ad_orders"]}[Data]
+				in
+				    Data

@@ -1,0 +1,58 @@
+table pbi_web_activity
+	lineageTag: pbi_web_activity
+
+	column Email
+		dataType: string
+		sourceColumn: Email
+		summarizeBy: none
+
+	column ActivityDateTime
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: ActivityDateTime
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column Sessions
+		dataType: int64
+		sourceColumn: Sessions
+		summarizeBy: sum
+
+	column PageViews
+		dataType: int64
+		sourceColumn: PageViews
+		summarizeBy: sum
+
+	column ArticlesRead
+		dataType: int64
+		sourceColumn: ArticlesRead
+		summarizeBy: sum
+
+	column DeviceType
+		dataType: string
+		sourceColumn: DeviceType
+		summarizeBy: none
+
+	column row_hash
+		dataType: string
+		sourceColumn: row_hash
+		summarizeBy: none
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	partition pbi_web_activity = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_web_activity"]}[Data]
+				in
+				    Data

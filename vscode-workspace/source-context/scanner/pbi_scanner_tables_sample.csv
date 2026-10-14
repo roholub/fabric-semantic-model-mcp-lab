@@ -1,0 +1,7 @@
+workspace,dataset,table,source_type,source_object,import_mode
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_customer360,SQL,pbi.vw_customer360,Import
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_subscriptions,SQL,pbi.vw_subscriptions,Import
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_web_activity,SQL,pbi.vw_web_activity,Import
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_newsletter_signups,SQL,pbi.vw_newsletter_signups,Import
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_event_registrations,SQL,pbi.vw_event_registrations,Import
+🕵️ Model Detective Agency,Customer 360 - As-Is,pbi_ad_orders,SQL,pbi.vw_ad_orders,Import

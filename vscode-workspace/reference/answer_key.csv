@@ -1,0 +1,10 @@
+question_id,question,expected_value
+Q01,Customers (excluding the Unknown member),150000
+Q02,Active subscriptions as of 2026-09-30,91077
+Q03,New subscriptions started in Q3 2026 (Jul 1 - Sep 30),13095
+Q04,"Cancellations in Q3 2026 (status Cancelled, end date in Q3)",6082
+Q05,Page views in September 2026 (all readers incl. unknown),624744
+Q06,"Known customers who read >=1 article AND attended >=1 event, Apr 1 - Sep 30 2026",2732
+Q07,"Ad revenue 2026 YTD (Jan 1 - Sep 30), USD",7603075.08
+Q08,"Active subscriptions as of 2026-09-30 in South Florida (gold, one Market table)",3029
+Q13,Page views by known customers through 2026-09-30,7540425

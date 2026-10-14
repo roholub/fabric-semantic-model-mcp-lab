@@ -1,0 +1,53 @@
+table pbi_event_registrations
+	lineageTag: pbi_event_registrations
+
+	column Email
+		dataType: string
+		sourceColumn: Email
+		summarizeBy: none
+
+	column EventName
+		dataType: string
+		sourceColumn: EventName
+		summarizeBy: none
+
+	column EventDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: EventDate
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column TicketType
+		dataType: string
+		sourceColumn: TicketType
+		summarizeBy: none
+
+	column TicketPrice
+		dataType: string
+		sourceColumn: TicketPrice
+		summarizeBy: none
+
+	column Attended
+		dataType: string
+		sourceColumn: Attended
+		summarizeBy: none
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	partition pbi_event_registrations = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_event_registrations"]}[Data]
+				in
+				    Data

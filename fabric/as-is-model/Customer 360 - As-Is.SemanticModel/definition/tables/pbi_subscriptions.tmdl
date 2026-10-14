@@ -1,0 +1,79 @@
+table pbi_subscriptions
+	lineageTag: pbi_subscriptions
+
+	column SubscriptionID
+		dataType: string
+		sourceColumn: SubscriptionID
+		summarizeBy: none
+
+	column Email
+		dataType: string
+		sourceColumn: Email
+		summarizeBy: none
+
+	column PlanName
+		dataType: string
+		sourceColumn: PlanName
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column StartDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: StartDate
+		summarizeBy: none
+
+	column EndDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: EndDate
+		summarizeBy: none
+
+	column sub_sts
+		dataType: string
+		sourceColumn: sub_sts
+		summarizeBy: none
+
+	column plan_prc
+		dataType: double
+		sourceColumn: plan_prc
+		summarizeBy: sum
+
+	column bill_cyc
+		dataType: string
+		sourceColumn: bill_cyc
+		summarizeBy: none
+
+	column chnl
+		dataType: string
+		sourceColumn: chnl
+		summarizeBy: none
+
+	column CancelReason
+		dataType: string
+		sourceColumn: CancelReason
+		summarizeBy: none
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	column _source_file
+		dataType: string
+		sourceColumn: _source_file
+		summarizeBy: none
+
+	partition pbi_subscriptions = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_subscriptions"]}[Data]
+				in
+				    Data

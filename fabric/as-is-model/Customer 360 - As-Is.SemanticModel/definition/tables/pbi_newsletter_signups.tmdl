@@ -1,0 +1,48 @@
+table pbi_newsletter_signups
+	lineageTag: pbi_newsletter_signups
+
+	column Email
+		dataType: string
+		sourceColumn: Email
+		summarizeBy: none
+
+	column NewsletterName
+		dataType: string
+		sourceColumn: NewsletterName
+		summarizeBy: none
+
+	column MarketName
+		dataType: string
+		sourceColumn: MarketName
+		summarizeBy: none
+
+	column SignupDate
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: SignupDate
+		summarizeBy: none
+
+	column Status
+		dataType: string
+		sourceColumn: Status
+		summarizeBy: none
+
+	column OpenRate
+		dataType: double
+		sourceColumn: OpenRate
+		summarizeBy: sum
+
+	column _etl_load_ts
+		dataType: dateTime
+		formatString: General Date
+		sourceColumn: _etl_load_ts
+		summarizeBy: none
+
+	partition pbi_newsletter_signups = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("<YOUR-LAKEHOUSE-SQL-ENDPOINT>", "LH_C360_Lab"),
+				    Data = Source{[Schema="dbo",Item="pbi_newsletter_signups"]}[Data]
+				in
+				    Data

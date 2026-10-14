@@ -1,0 +1,21 @@
+relationship rel1
+	crossFilteringBehavior: bothDirections
+	fromColumn: pbi_subscriptions.Email
+	toColumn: pbi_customer360.Email
+
+relationship rel2
+	fromColumn: pbi_web_activity.Email
+	toColumn: pbi_customer360.Email
+
+relationship rel3
+	fromColumn: pbi_newsletter_signups.Email
+	toColumn: pbi_customer360.Email
+
+relationship rel4
+	fromColumn: pbi_event_registrations.Email
+	toColumn: pbi_customer360.Email
+
+relationship rel5
+	fromColumn: pbi_ad_orders.ContactEmail
+	toColumn: pbi_customer360.Email
+
