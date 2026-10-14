@@ -400,6 +400,8 @@ START
 
 ## Disclaimer
 
+This repo is MIT licensed (see [LICENSE](LICENSE)). That covers the files here only. The Power BI Authoring MCP server is Microsoft software under its own license terms, which you read and accept yourself (see [setup/EULA_and_Data_Terms.md](setup/EULA_and_Data_Terms.md)).
+
 This repository is a personal project and is not affiliated with, endorsed by, or associated with Microsoft Corporation or any of its subsidiaries.
 All views and code expressed here are my own. The data is synthetic. The summary of the license terms is not legal advice. Please read the terms yourself.
 Microsoft, Power BI, Fabric and related marks are trademarks of Microsoft Corporation.
